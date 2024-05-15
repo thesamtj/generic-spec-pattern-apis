@@ -1,6 +1,6 @@
 ﻿using generic_repo_uow_pattern_api.Entity;
 
-namespace generic_repo_uow_pattern_api.Repository
+namespace generic_repo_uow_pattern_api.Interface
 {
     public interface IProductRepository : IRepository<Product>
     {

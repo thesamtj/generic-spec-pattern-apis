@@ -1,4 +1,4 @@
-﻿namespace generic_repo_uow_pattern_api.Repository
+﻿namespace generic_repo_uow_pattern_api.Interface
 {
     public interface IUnitOfWork : IDisposable
     {
@@ -7,6 +7,9 @@
         Task BeginTransactionAsync();
         Task CommitAsync();
         Task RollbackAsync();
+
         public IProductRepository ProductRepository { get; }
+        TRepository GetRepository<TRepository, TEntity>() where TRepository : class,
+           IRepository<TEntity> where TEntity : class;
     }
 }

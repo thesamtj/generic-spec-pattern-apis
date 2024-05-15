@@ -1,5 +1,6 @@
 ﻿using generic_repo_uow_pattern_api.Data;
 using generic_repo_uow_pattern_api.Entity;
+using generic_repo_uow_pattern_api.Interface;
 using Microsoft.EntityFrameworkCore;
 
 namespace generic_repo_uow_pattern_api.Repository

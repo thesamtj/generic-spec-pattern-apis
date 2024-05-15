@@ -1,5 +1,5 @@
 ﻿using generic_repo_uow_pattern_api.Entity;
-using generic_repo_uow_pattern_api.Repository;
+using generic_repo_uow_pattern_api.Interface;
 using generic_repo_uow_pattern_api.VeiwModel;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
@@ -13,7 +13,7 @@ namespace generic_repo_uow_pattern_api.Controllers
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            var productRepository = unitOfWork.GetRepository<Product>();
+            var productRepository = unitOfWork.GetRepository<IProductRepository, Product>();
             var result = await productRepository.GetAllAsync();
 
             return Ok(result);
@@ -23,11 +23,11 @@ namespace generic_repo_uow_pattern_api.Controllers
        [HttpGet("productbyname")]
         public async Task<IActionResult> GetByName(string proudctName)
         {
-            //var productRepository = unitOfWork.GetRepository<IProductRepository, Product>();
-            //var result = await productRepository.GetProductsByName(proudctName);
-            var product = await unitOfWork.ProductRepository.GetProductsByName(proudctName);
+            var productRepository = unitOfWork.GetRepository<IProductRepository, Product>();
+            var result = await productRepository.GetProductsByName(proudctName);
+            // var product = await unitOfWork.ProductRepository.GetProductsByName(proudctName);
 
-            return Ok(product);
+            return Ok(result);
         }
 
         [HttpPost]
@@ -42,7 +42,7 @@ namespace generic_repo_uow_pattern_api.Controllers
                     Price = product.Price,
                     ProductName = product.ProductName
                 };
-                var productRepository = unitOfWork.GetRepository<Product>();
+                var productRepository = unitOfWork.GetRepository<IProductRepository, Product>();
                 var productrestul = await productRepository.AddAsync(productEnitity);
 
                 await unitOfWork.SaveChangesAsync();

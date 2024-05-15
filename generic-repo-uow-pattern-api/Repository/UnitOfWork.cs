@@ -1,4 +1,5 @@
 ﻿using generic_repo_uow_pattern_api.Data;
+using generic_repo_uow_pattern_api.Interface;
 using Microsoft.EntityFrameworkCore.Storage;
 
 namespace generic_repo_uow_pattern_api.Repository
@@ -8,13 +9,18 @@ namespace generic_repo_uow_pattern_api.Repository
         private bool disposed = false;
         private readonly MyDbContext _myDbContext;
         private readonly Dictionary<Type, object> _repositories;
+        private readonly IServiceProvider _serviceProvider;
         private IDbContextTransaction _transaction;
 
         public IProductRepository ProductRepository { get; }
 
-        public UnitOfWork(MyDbContext myDbContext)
+        public UnitOfWork(
+            MyDbContext myDbContext,
+            IServiceProvider serviceProvider
+            )
         {
             _myDbContext = myDbContext;
+            _serviceProvider = serviceProvider;
             _repositories = new Dictionary<Type, object>(); 
         }
         public async Task BeginTransactionAsync()
@@ -81,6 +87,28 @@ namespace generic_repo_uow_pattern_api.Repository
         {
             return await _myDbContext.SaveChangesAsync(); 
 
+        }
+
+        TRepository IUnitOfWork.GetRepository<TRepository, TEntity>()
+        {
+            var repository = _serviceProvider.GetService<TRepository>();
+
+            if (repository == null)
+            {
+                throw new InvalidOperationException($"Failed to get repository of type {typeof(TRepository)}");
+            }
+
+            // Set the DbContext
+            if (repository is IRepository<TEntity> genericRepository)
+            {
+                genericRepository.SetDbContext(_myDbContext);
+            }
+            else
+            {
+                throw new InvalidOperationException($"Repository of type {typeof(TRepository)} does not implement IRepository<TEntity>.");
+            }
+
+            return repository;
         }
     }
 }

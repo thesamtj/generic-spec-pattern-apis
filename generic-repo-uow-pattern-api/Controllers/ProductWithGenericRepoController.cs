@@ -1,5 +1,5 @@
 ﻿using generic_repo_uow_pattern_api.Entity;
-using generic_repo_uow_pattern_api.Repository;
+using generic_repo_uow_pattern_api.Interface;
 using generic_repo_uow_pattern_api.VeiwModel;
 using Microsoft.AspNetCore.Mvc;
 
