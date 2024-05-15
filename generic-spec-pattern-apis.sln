@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34525.116
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "generic-repo-pattern-api", "generic-repo-pattern-api\generic-repo-pattern-api.csproj", "{7C5C692F-8EFE-4273-A92C-9ED496356024}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "generic-repo-pattern-api", "generic-repo-pattern-api\generic-repo-pattern-api.csproj", "{7C5C692F-8EFE-4273-A92C-9ED496356024}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "generic-repo-uow-pattern-api", "generic-repo-uow-pattern-api\generic-repo-uow-pattern-api.csproj", "{9F00287F-D49C-4EF2-B34B-7326F0E2A62F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{7C5C692F-8EFE-4273-A92C-9ED496356024}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7C5C692F-8EFE-4273-A92C-9ED496356024}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7C5C692F-8EFE-4273-A92C-9ED496356024}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F00287F-D49C-4EF2-B34B-7326F0E2A62F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F00287F-D49C-4EF2-B34B-7326F0E2A62F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F00287F-D49C-4EF2-B34B-7326F0E2A62F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F00287F-D49C-4EF2-B34B-7326F0E2A62F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
