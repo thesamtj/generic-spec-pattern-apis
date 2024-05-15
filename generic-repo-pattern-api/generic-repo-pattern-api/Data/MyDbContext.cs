@@ -8,15 +8,15 @@ namespace generic_repo_pattern_api.Data
 {
     public class MyDbContext : DbContext
     {
-        public DbSet<Product> Products { get; set; }
-        public DbSet<Order> Orders { get; set; }
-
-        public DbSet<Blog> Blogs { get; set; }
-
         public MyDbContext(DbContextOptions<MyDbContext> dbContextOptions) : base(dbContextOptions)
         {
 
         }
+
+        public DbSet<Product> Products { get; set; }
+        public DbSet<Order> Orders { get; set; }
+
+        public DbSet<Blog> Blogs { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

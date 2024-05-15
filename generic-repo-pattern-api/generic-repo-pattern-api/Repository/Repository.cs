@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using generic_repo_pattern_api.Data;
+using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 
 namespace generic_repo_pattern_api.Repository
@@ -6,18 +7,18 @@ namespace generic_repo_pattern_api.Repository
     public class Repository<T> : IRepository<T> where T : class
     {
         protected readonly DbSet<T> _dbSet;
-        private DbContext _dbContext;
+        private MyDbContext _myDbContext;
 
-        public Repository(DbContext dbContext)
+        public Repository(MyDbContext myDbContext)
         {
-            _dbSet = dbContext.Set<T>();
-            _dbContext = dbContext;
+            _dbSet = myDbContext.Set<T>();
+            _myDbContext = myDbContext;
         }
         
         public async Task<T> AddAsync(T entity)
         {
             await _dbSet.AddAsync(entity);
-            await _dbContext.SaveChangesAsync();
+            await _myDbContext.SaveChangesAsync();
             return entity;
         }
         
@@ -29,7 +30,7 @@ namespace generic_repo_pattern_api.Repository
         public async Task DeleteAsync(T entity)
         {
             _dbSet.Remove(entity);
-            await _dbContext.SaveChangesAsync();
+            await _myDbContext.SaveChangesAsync();
         }
 
         public async Task<IEnumerable<T>> GetAllAsync()
@@ -45,8 +46,8 @@ namespace generic_repo_pattern_api.Repository
         public async Task UpdateAsync(T entity)
         {
             _dbSet.Attach(entity);
-            _dbContext.Entry(entity).State = EntityState.Modified;
-            await _dbContext.SaveChangesAsync();
+            _myDbContext.Entry(entity).State = EntityState.Modified;
+            await _myDbContext.SaveChangesAsync();
         }
 
     }
