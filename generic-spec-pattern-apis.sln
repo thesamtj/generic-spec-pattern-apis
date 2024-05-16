@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "generic-repo-pattern-api", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "generic-repo-uow-pattern-api", "generic-repo-uow-pattern-api\generic-repo-uow-pattern-api.csproj", "{9F00287F-D49C-4EF2-B34B-7326F0E2A62F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "expression-generic-repo-pattern-api", "expression-generic-repo-pattern-api\expression-generic-repo-pattern-api.csproj", "{1F3B9E29-0B64-4338-A765-C652FE6B410F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{9F00287F-D49C-4EF2-B34B-7326F0E2A62F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9F00287F-D49C-4EF2-B34B-7326F0E2A62F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9F00287F-D49C-4EF2-B34B-7326F0E2A62F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F3B9E29-0B64-4338-A765-C652FE6B410F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F3B9E29-0B64-4338-A765-C652FE6B410F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F3B9E29-0B64-4338-A765-C652FE6B410F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F3B9E29-0B64-4338-A765-C652FE6B410F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
