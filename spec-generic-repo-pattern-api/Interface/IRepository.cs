@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 
-namespace expression_generic_repo_pattern_api.Interface
+namespace spec_generic_repo_pattern_api.Interface
 {
     public interface IRepository<T> where T : class
     {
@@ -12,7 +12,7 @@ namespace expression_generic_repo_pattern_api.Interface
         Task DeleteAsync(T entity);
         void SetDbContext(DbContext dbContext);
         Task<T> FindAsync(Expression<Func<T, bool>> match);
-        Task<ICollection<T>> FindAllAsync(Expression<Func<T, bool>> match); 
+        Task<ICollection<T>> FindAllAsync(Expression<Func<T, bool>> match);
         Task<int> CountAsync(Expression<Func<T, bool>> predicate = null);
         Task<(
             ICollection<T> Result, 
@@ -29,7 +29,7 @@ namespace expression_generic_repo_pattern_api.Interface
                 params Expression<Func<T, object>>[] includeProperties
             );
 
-        //Task<IEnumerable<T>> GetAllAsync(ISpecification<T> specification = null);
-        //Task<T> FindAsync(ISpecification<T> specification = null);
+        Task<IEnumerable<T>> GetAllAsync(ISpecification<T> specification = null);
+        Task<T> FindAsync(ISpecification<T> specification = null);
     }
 }
